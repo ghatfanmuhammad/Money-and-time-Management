@@ -1,4 +1,4 @@
-# Hidupku
+# Money and Time Management
 
 Aplikasi web pribadi untuk mengatur jadwal mingguan dan keuangan di satu tempat. Dibuat dengan HTML, CSS, dan JavaScript biasa, tanpa framework dan tanpa instalasi. Data tersimpan di browser (localStorage), jadi aplikasi bisa dipakai tanpa internet.
 
