@@ -1,0 +1,11 @@
+{
+  "name": "hidupku",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jadwal dan keuangan pribadi",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node tests/parser.test.js && node tests/catat.test.js"
+  },
+  "engines": { "node": ">=22.13" }
+}

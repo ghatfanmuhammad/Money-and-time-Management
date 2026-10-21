@@ -1,0 +1,20 @@
+# Database & data pribadi
+server/data/
+*.db
+
+# Environment & kredensial
+.env
+server/.env
+*.env
+
+# Dependency & logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

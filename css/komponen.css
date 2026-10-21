@@ -1,0 +1,107 @@
+/* =====================================================
+   KOMPONEN: bagian kecil yang dipakai di banyak halaman.
+   Kartu, tombol, bar progres, lencana, form, jendela, pesan singkat.
+   ===================================================== */
+
+/* ===== Kartu ===== */
+.kartu { background: var(--kartu); border-radius: var(--radius); padding: 24px 28px; transition: background-color .25s; }
+.kartu h2 { font-size: 1.3rem; font-weight: 600; }
+.sub-kartu { margin: 4px 0 14px; font-size: .86rem; color: var(--tinta2); }
+.kartu h2 + :not(.sub-kartu) { margin-top: 12px; }
+.label { font-size: .9rem; color: var(--tinta2); }
+.angka { font-size: 1.7rem; font-size: clamp(1.1rem, 11cqi, 1.7rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.25; white-space: nowrap; }
+.grid-ringkas > .kartu { container-type: inline-size; } /* supaya .angka bisa mengikuti lebar kartu */
+.kecil { font-size: .8rem; color: var(--tinta2); }
+.plus { color: var(--ok-tua); }
+.minus { color: var(--bahaya-tua); }
+.kosong { color: var(--tinta2); font-style: italic; padding: 6px 0; }
+
+/* Lencana perubahan: panah dan persen */
+.delta {
+  display: inline-block; font-size: .78rem; font-weight: 600;
+  border-radius: 99px; padding: 2px 11px; white-space: nowrap;
+}
+.delta.baik { background: var(--ok-lembut); color: var(--ok-tua); }
+.delta.buruk { background: var(--bahaya-lembut); color: var(--bahaya-tua); }
+.delta.netral { background: color-mix(in srgb, var(--tinta2) 16%, var(--kartu)); color: var(--tinta); }
+
+/* ===== Bar progres ===== */
+.bar { height: 8px; background: var(--garis); border-radius: 99px; overflow: hidden; margin-top: 8px; }
+.bar > i { display: block; height: 100%; background: var(--aksen); border-radius: 99px; transition: width .3s; }
+.bar.ok > i { background: var(--ok); }
+.bar.warn > i { background: var(--peringatan); }
+.bar.bahaya > i { background: var(--bahaya); }
+.bar.gelap > i { background: var(--tinta); }
+/* Bar besar: bagian kosongnya bergaris miring */
+.bar.besar {
+  height: 16px; margin-top: 14px;
+  background: repeating-linear-gradient(135deg, var(--garis) 0 4px, var(--kartu2) 4px 8px);
+}
+
+/* ===== Tombol ===== */
+.btn {
+  border: 1px solid transparent; background: var(--kartu2); color: var(--tinta);
+  padding: 9px 20px; border-radius: 99px; cursor: pointer; min-height: 40px; font-weight: 500;
+  transition: background-color .2s, border-color .2s, filter .2s;
+}
+.btn:hover { border-color: var(--aksen); }
+.btn.primer { background: var(--aksen); border-color: var(--aksen); color: #fff; font-weight: 600; }
+.btn.primer:hover { filter: brightness(.94); }
+.btn.gelap { background: var(--tinta); border-color: var(--tinta); color: var(--kartu); font-weight: 600; }
+.btn.aktif { background: var(--tinta); border-color: var(--tinta); color: var(--kartu); font-weight: 600; }
+.btn.besar { padding: 14px 28px; min-height: 52px; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px; }
+.btn.mini { padding: 3px 12px; font-size: .78rem; min-height: 30px; }
+.btn.hapus { color: var(--bahaya-tua); }
+.btn .ikon { width: 18px; height: 18px; }
+
+/* ===== Pita pemberitahuan ===== */
+.banner {
+  background: var(--aksen-lembut); color: var(--tinta); border-radius: 22px; padding: 12px 20px;
+  margin-bottom: 14px; display: flex; gap: 12px; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; font-size: .9rem;
+}
+
+/* ===== Chip dan titik prioritas ===== */
+.chip {
+  display: inline-block; padding: 1px 10px; border-radius: 99px; font-size: .72rem;
+  background: var(--aksen-lembut); color: var(--aksen-tua); margin-right: 4px;
+}
+.chip.abu { background: var(--garis); color: var(--tinta2); }
+
+.titik { width: 11px; height: 11px; border-radius: 50%; border: 0; padding: 0; flex: none; display: inline-block; }
+button.titik { cursor: pointer; }
+.titik.tinggi { background: #d9594a; }
+.titik.sedang { background: #e2b24c; }
+.titik.rendah { background: #78a56e; }
+
+/* ===== Form ===== */
+label { display: block; font-size: .85rem; color: var(--tinta2); margin-top: 12px; }
+input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
+  display: block; width: 100%; margin-top: 4px; padding: 10px 14px;
+  border: 1px solid var(--garis); border-radius: 14px; background: var(--isian); color: var(--tinta);
+}
+input:focus, select:focus { outline: 2px solid var(--aksen); outline-offset: 1px; border-color: var(--aksen); }
+.pilih-jenis { display: flex; gap: 8px; }
+.pilih-jenis label {
+  flex: 1; margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;
+  border: 1px solid var(--garis); border-radius: 14px; padding: 10px 14px; color: var(--tinta);
+}
+.pilih-jenis input { accent-color: var(--aksen); }
+
+dialog {
+  border: 0; border-radius: 32px; padding: 28px; width: min(440px, 92vw);
+  background: var(--kartu); color: var(--tinta);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
+}
+dialog::backdrop { background: rgba(20, 16, 12, .5); }
+dialog h3 { font-size: 1.3rem; margin-bottom: 4px; }
+.dlg-aksi { display: flex; justify-content: flex-end; gap: 8px; margin-top: 22px; }
+
+/* ===== Pesan singkat ===== */
+.toast {
+  position: fixed; left: 50%; bottom: 26px; z-index: 60;
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  background: var(--tinta); color: var(--kartu); padding: 11px 20px; border-radius: 99px;
+  max-width: 92vw; font-size: .9rem; transition: opacity .25s, transform .25s;
+}
+.toast.tampil { opacity: 1; transform: translate(-50%, 0); }

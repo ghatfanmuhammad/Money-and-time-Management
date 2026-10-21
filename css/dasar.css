@@ -1,0 +1,94 @@
+/* =====================================================
+   DASAR: warna, tema, dan gaya huruf.
+   Untuk mengganti warna, ubah variabel di file ini:
+     - :root                 warna mode terang
+     - [data-tema="..."]     warna aksen tiap tema
+     - [data-mode="gelap"]   warna mode gelap
+   ===================================================== */
+
+:root {
+  /* aksen (diganti oleh tema). Bawaan: jingga */
+  --aksen: #d1430e;
+  --aksen-tua: #a8340a;            /* aksen untuk teks di atas latar terang */
+
+  /* permukaan dan teks */
+  --latar: #e8e7e4;                /* di luar bingkai aplikasi */
+  --wadah: #f5f4f1;                /* bingkai aplikasi */
+  --kartu: #ffffff;
+  --kartu2: #eeedea;               /* kartu kedua: abu hangat untuk kartu kecil dan panel */
+  --isian: #ffffff;
+  --tinta: #161616;
+  --tinta2: #6c6a66;
+  --garis: #e8e6e2;
+
+  /* status */
+  --ok: #2e8a4a;
+  --ok-tua: #17652f;
+  --peringatan: #d9a441;
+  --peringatan-tua: #7a5a10;
+  --bahaya: #c4402f;
+  --bahaya-tua: #a8301f;
+
+  /* turunan: versi lembut dari warna di atas */
+  --aksen-lembut: color-mix(in srgb, var(--aksen) 13%, var(--kartu));
+  --ok-lembut: color-mix(in srgb, var(--ok) 15%, var(--kartu));
+  --peringatan-lembut: color-mix(in srgb, var(--peringatan) 24%, var(--kartu));
+  --bahaya-lembut: color-mix(in srgb, var(--bahaya) 13%, var(--kartu));
+
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius-besar: 32px;
+  --radius: 28px;
+}
+
+/* ----- Tema: hanya mengganti aksen ----- */
+/* Selector diawali `:root` karena tombol di Pengaturan dan rail juga punya atribut data-tema
+   dan data-mode. Tanpa `:root`, tombol itu ikut memakai warna mode gelap sendiri
+   (teks gelap di atas latar gelap). */
+:root[data-tema="ungu"]   { --aksen: #6b4fcf; --aksen-tua: #4a32a8; }
+:root[data-tema="hijau"]  { --aksen: #2f7d4f; --aksen-tua: #1f5a3a; }
+:root[data-tema="biru"]   { --aksen: #2f6db3; --aksen-tua: #1f4f86; }
+
+/* ----- Mode gelap: harus setelah tema supaya --aksen-tua ikut berubah ----- */
+:root[data-mode="gelap"] {
+  --latar: #0b0b0b;
+  --wadah: #131312;
+  --kartu: #1d1d1b;
+  --kartu2: #282826;
+  --isian: #131312;
+  --tinta: #f3f2ef;
+  --tinta2: #a3a09b;
+  --garis: #302f2c;
+  --aksen-tua: color-mix(in srgb, var(--aksen) 45%, #ffffff);
+  --ok: #6fc28a;
+  --ok-tua: #a9e4bd;
+  --peringatan-tua: #f3d98a;
+  --bahaya: #e8705f;
+  --bahaya-tua: #ffb4aa;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--latar);
+  color: var(--tinta);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .25s, color .25s;
+}
+
+h1, h2, h3 { margin: 0; letter-spacing: -.01em; }
+button, input, select { font: inherit; color: inherit; }
+a { color: var(--aksen-tua); }
+a.btn { text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+/* Kode contoh memakai huruf aplikasi (bukan monospace kecil) dan diberi jarak dari teks di sekitarnya */
+code {
+  background: var(--aksen-lembut); color: var(--aksen-tua);
+  font-family: inherit; font-size: 1em; font-weight: 600;
+  padding: 1px 7px; margin: 0 .22em; border-radius: 6px; white-space: nowrap;
+}
+
+/* Fokus keyboard harus terlihat */
+:focus-visible { outline: 2px solid var(--aksen); outline-offset: 2px; }
